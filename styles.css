@@ -1,0 +1,96 @@
+/* Styles is defined using BEM notation */
+
+/* ------------------------------------------------------------------------- */
+
+/* Slider container */
+.slider-container {
+  position: absolute;
+  height: 300px;
+  width: 300px;
+  top: 10px;
+  left: 10px;
+  overflow: hidden;
+  
+  background: white;
+  border: 1px solid #888;
+}
+
+/* Define a slider view */
+.slider-container__view {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  will-change: transform;
+  transition: transform 0.5s ease-out;  
+}
+/* Customize the main view */
+.slider-container__view--main {
+  transform: translateX(0);
+}
+/* Customize the details view */
+.slider-container__view--details {
+  transform: translateX(100%);
+}
+/* When it's slider, translateX to the left */
+.slider-container--slided .slider-container__view--main {
+  transform: translateX(-100%);
+}
+.slider-container--slided .slider-container__view--details {
+  transform: translateX(0);
+}
+
+/* ------------------------------------------------------------------------- */
+
+/* In the details view, there is a footer with a back to menu button */
+.slider-container__view--details > footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid #ccc;
+  padding: 5px;
+  text-align: center;
+  
+}
+.slider-container__view--details > footer button {
+  padding: 5px;
+}
+
+/* ------------------------------------------------------------------------- */
+
+/* Menu items list */
+.menu-items-list {
+  margin: 0;
+  padding: 5px;  
+  list-style-type: none;
+}
+.menu-items-list > li {
+  position: relative;
+  padding: 0 10px;
+  line-height: 40px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background: linear-gradient(to bottom, #fafafa, #eee);
+  cursor: pointer;
+  transition: border-color .05s ease-out;
+}
+.menu-items-list > li:after {
+  content: '\25BA';
+  position: absolute;
+  right: 10px;
+  top: 0;
+  bottom: 0;
+  line-height: 40px;
+  transition: opacity .05s ease-out;
+  opacity: 0.2;
+}
+.menu-items-list > li:hover {
+  border-color: #888;
+}
+.menu-items-list > li:hover:after {
+  opacity: 0.5;
+}
